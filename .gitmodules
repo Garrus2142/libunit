@@ -1,0 +1,3 @@
+[submodule "framework/libft"]
+	path = framework/libft
+	url = https://github.com/garrus2142/libft
