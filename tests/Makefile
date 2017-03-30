@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/03/31 00:07:32 by thugo            ###   ########.fr        #
+#    Updated: 2017/03/31 00:51:05 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ DEP = Makefile $(wildcard */*.h)
 
 OBJ = $(addprefix .obj/, $(SRC:.c=.o))
 INCLUDES += $(foreach dirs, $(wildcard */), -I $(dirs)) -I ../framework/includes
-LINKS += -L. -lunit
+LINKS += -L../framework -lunit
 
 all: $(NAME)
 
