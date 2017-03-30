@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ml_lstnew.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/30 00:20:29 by thugo             #+#    #+#             */
-/*   Updated: 2017/03/30 03:04:23 by thugo            ###   ########.fr       */
+/*   Created: 2017/03/30 01:02:21 by thugo             #+#    #+#             */
+/*   Updated: 2017/03/30 03:04:01 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 #include <string.h>
 #include "libunit_types.h"
 
-t_ml_list	*ml_lstnew(void const *content, size_t size)
-{
-	t_ml_list	*new;
+/*
+** 	Initialise la serie de tests
+*/
 
-	if (!(new = (t_ml_list *)malloc(sizeof(t_ml_list))))
-		return (NULL);
-	if (!content)
-		new->content = NULL;
-	else
-	{
-		if (!(new->content = malloc(size)))
-		{
-			free(new);
-			return (NULL);
-		}
-		memcpy(new->content, content, size);
-	}
-	new->next = NULL;
-	return (new);
+t_unit_tests	*unit_init(char *name)
+{
+	t_unit_tests	*tests;
+
+	if (!(tests = (t_unit_tests *)malloc(sizeof(t_unit_tests))))
+		exit(EXIT_FAILURE);
+	memset(tests, 0, sizeof(t_unit_tests));
+	if (!(tests->name = strdup(name)))
+		exit(EXIT_FAILURE);
+	return (tests);
 }
