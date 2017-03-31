@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/03/31 14:46:39 by thugo            ###   ########.fr        #
+#    Updated: 2017/03/31 00:51:05 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME = unit_test
 #GCC Flags
 FLAGS = -Werror -Wall -Wextra
 #Includes Folders
-INCLUDES =
+INCLUDES = -I .
 #Link library
-LINKS =
+LINKS = -L. -lft
 #Source files
-SRC = $(wildcard */*.c)
+SRC = main.c $(wildcard */*.c)
 #Dependance files
 DEP = Makefile $(wildcard */*.h)
 
