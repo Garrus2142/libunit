@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minilib.h                                          :+:      :+:    :+:   */
+/*   libunit_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/30 00:29:11 by thugo             #+#    #+#             */
-/*   Updated: 2017/03/31 17:00:39 by thugo            ###   ########.fr       */
+/*   Created: 2017/04/04 20:02:07 by thugo             #+#    #+#             */
+/*   Updated: 2017/04/04 21:00:44 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINILIB_H
-# define MINILIB_H
+#ifndef LIBUNIT_INTERNAL_H
+# define LIBUNIT_INTERNAL_H
 
-# include "libunit_types.h"
-
-t_ml_list	*ml_lstnew(void const *content, size_t size);
-void		ml_lstpush(t_ml_list **alst, t_ml_list *new);
-char		**ml_nulltabdup(char **src);
+void	print_header(char *name);
+void	print_test(int status, char *name);
+void	print_total(int valid, int total);
 
 #endif
