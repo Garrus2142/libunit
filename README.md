@@ -27,21 +27,32 @@
 
 ## Getting Started
 
-1. Créer le dossier *libunit/tests/*
-1. Copier le Makefile du dossier *libunit/examples/* dans *libunit/tests/*
-1. Créer un dossier pour chaque catégorie de test dans *libunit/tests/*
-1. Créer un fichier par test.
-1. Créer un fichier *00_launcher.c* pour chaque dossier de tests
-  1. Vous devez inclure le header *"libunit.h"*
-  1. Déclarez les prototypes des tests dans *libunit/tests/{tests folder}/{tests folder}.h*
-  1. Déclarez tout les tests dans le launcher avec **unit\_register\_[fn|fnio|exe]**
-1. Créer un fichier *main.c* dans *libunit/tests/*
-  1. Vous devez inclure le header *"libunit.h"*
-  1. Récupérer le *t_unit_tests* via la fonction **unit\_init**
-  1. Déclarez les prototypes des launchers dans *libunit/tests/includes/launchers.h*
-  1. Déclarez tout les launchers dans la fonction main avec **unit\_register\_launcher**
-  1. Lancez la série de tests avec **unit\_launch\_tests**
-1. Modifier le Makefile pour ajouter les dossiers de tests et les fichiers du projet à tester.
+* Créer le dossier *libunit/tests/*
+* Copier le Makefile du dossier *libunit/examples/* dans *libunit/tests/*
+* Créer un dossier pour chaque catégorie de test dans *libunit/tests/*
+* Créer un fichier par test.
+* Créer un fichier *00_launcher.c* pour chaque dossier de tests
+* Créer un fichier *main.c* dans *libunit/tests/*
+* Modifier le Makefile pour ajouter les dossiers de tests et les fichiers du projet à tester.
+
+##### Dans les fichiers de tests
+
+* Mettez uniquement une fonction de test par fichier.
+* La fonction doit retourner 0 en cas de succès, -1 en cas d'erreur.
+
+##### Dans les 00_launcher.c
+
+* Vous devez inclure le header *"libunit.h"*
+* Déclarez les prototypes des tests dans *libunit/tests/{tests folder}/{tests folder}.h*
+* Déclarez tout les tests dans le launcher avec **unit\_register\_[fn|fnio|exe]**
+
+##### Dans le main.c
+
+* Vous devez inclure le header *"libunit.h"*
+* Récupérer le *t_unit_tests* via la fonction **unit\_init**
+* Déclarez les prototypes des launchers dans *libunit/tests/includes/launchers.h*
+* Déclarez tout les launchers dans la fonction main avec **unit\_register\_launcher**
+* Lancez la série de tests avec **unit\_launch\_tests**
 
 ## Référence
 >Les fonctions des tests doivent renvoyer 0 en cas de succès, -1 en cas d'erreur.
