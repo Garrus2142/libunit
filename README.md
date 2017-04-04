@@ -55,7 +55,7 @@
 * Lancez la série de tests avec **unit\_launch\_tests**
 
 ## Référence
->Les fonctions des tests doivent renvoyer 0 en cas de succès, -1 en cas d'erreur.
+>Les fonctions des test doivent renvoyer 0 en cas de succès, -1 en cas d'erreur.
 
 `t_unit_tests *unit_init(char *name)`<br/>
 **Initialisation d'une série de tests**<br/>
