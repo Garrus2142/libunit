@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:26:51 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/04 21:07:08 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/04 22:40:36 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	exec_exe(t_unit_exe *exe)
 		close(pipe_in[0]);
 		close(pipe_out[1]);
 		execve(exe->path, exe->argv, NULL);
-		exit(EXIT_FAILURE);
+		exit(EXIT_BADEXE);
 	}
 	if (fork() == 0)
 	{

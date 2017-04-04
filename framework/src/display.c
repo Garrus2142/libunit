@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 20:00:43 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/04 21:08:00 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/04 22:42:05 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <signal.h>
 #include <string.h>
 #include "libunit_types.h"
+#include "libunit_internal.h"
 
 void	print_header(char *name)
 {
@@ -33,6 +34,8 @@ void	print_test(int status, char *name)
 		strcpy(status_str, "\e[32mOK\e[0m");
 	else if (WIFEXITED(status) && WEXITSTATUS(status) == EXIT_FAILURE)
 		strcpy(status_str, "\e[31mKO\e[0m");
+	else if (WIFEXITED(status) && WEXITSTATUS(status) == EXIT_BADEXE)
+		strcpy(status_str, "\e[31mBAD EXE\e[0m");
 	else if (WIFSIGNALED(status) && WTERMSIG(status) == SIGABRT)
 		strcpy(status_str, "\e[31mABRT\e[0m");
 	else if (WIFSIGNALED(status) && WTERMSIG(status) == SIGBUS)
