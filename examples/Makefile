@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/03/31 00:51:05 by thugo            ###   ########.fr        #
+#    Updated: 2017/04/04 22:03:08 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,19 @@ NAME = unit_test
 #GCC Flags
 FLAGS = -Werror -Wall -Wextra
 #Includes Folders
-INCLUDES = -I .
+INCLUDES = -I includes
 #Link library
 LINKS = -L. -lft
+#Tests Folders
+TFOLDERS = putstr strlen exe_io
 #Source files
-SRC = main.c $(wildcard */*.c)
+SRC = main.c
 #Dependance files
 DEP = Makefile $(wildcard */*.h)
 
-OBJ = $(addprefix .obj/, $(SRC:.c=.o))
-INCLUDES += $(foreach dirs, $(wildcard */), -I $(dirs)) -I ../framework/includes
+SRC += $(foreach dirs, $(TFOLDERS), $(wildcard $(dirs)/*.c))
+OBJ = $(addprefix obj/, $(SRC:.c=.o))
+INCLUDES += $(foreach dirs, $(TFOLDERS), -I $(dirs)) -I ../framework/includes
 LINKS += -L../framework -lunit
 
 all: $(NAME)
@@ -37,7 +40,7 @@ $(NAME): $(OBJ) $(DEP)
 	@gcc $(OBJ) $(LINKS) -o $(NAME)
 	@printf " [\e[32mOK\e[0m]\n"
 
-.obj/%.o: %.c
+obj/%.o: %.c
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mCompile:\e[0m $^\e[K\r"
 	@mkdir -p $(dir $@)
 	@gcc $(FLAGS) $(INCLUDES) -c $^ -o $@
@@ -46,7 +49,7 @@ $(NAME): $(OBJ) $(DEP)
 clean:
 	@printf "[\e[33m$(NAME)\e[0m] \e[34mDelete objects\e[0m"
 	@rm -f $(OBJ)
-	@rm -rf .obj
+	@rm -rf obj
 	@printf " [\e[32mOK\e[0m]\n"
 
 fclean: clean
