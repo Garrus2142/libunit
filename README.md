@@ -27,6 +27,7 @@
 
 ## Getting Started
 
+1. Créer le dossier *libunit/tests/*
 1. Copier le Makefile du dossier *libunit/examples/* dans *libunit/tests/*
 1. Créer un dossier pour chaque catégorie de test dans *libunit/tests/*
 1. Créer un fichier par test.
