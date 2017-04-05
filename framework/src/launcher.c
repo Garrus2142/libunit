@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:26:51 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/05 06:57:45 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/05 11:06:20 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <fcntl.h>
 #include "libunit.h"
 #include "libunit_internal.h"
 #include "minilib.h"
@@ -81,6 +82,8 @@ static int	exec_exe(t_unit_exe *exe)
 		perror("libunit");
 		exit(EXIT_FAILURE);
 	}
+	fcntl(pipe_in[1], F_SETNOSIGPIPE, 1);
+	fcntl(pipe_out[1], F_SETNOSIGPIPE, 1);
 	if ((pid_exe = fork()) == 0)
 	{
 		dup2(pipe_in[0], STDIN_FILENO);
