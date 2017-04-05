@@ -85,10 +85,10 @@
 *name*: Nom du test.<br/>
 *f*: Pointeur sur fonction du test. (`int f(int in, int out)`)<br/>
 
-`void unit_register_exe(t_unit_launcher *launcher, char *name, char *path, char **argv, int (*f)(int, int))`<br/>
+`void unit_register_exe(t_unit_launcher *launcher, char *name, char *path, char **argv, int (*f)(int, int, pid_t))`<br/>
 **Enregistrement d'un exécutable avec redirection de l'entrée et sortie standard**<br/>
 *launcher*: Structure du launcher.<br/>
 *name*: Nom du test.<br/>
 *path*: Chemin de l'exécutable relatif au dossier *libunit/tests/*.<br/>
 *argv*: Arguments à envoyer à l'exécutable terminé par un caractère NULL.<br/>
-*f*: Pointeur sur fonction du test. (`int f(int in, int out)`)<br/>
+*f*: Pointeur sur fonction du test. (`int f(int in, int out, pid_t pid)`)<br/>

@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 23:46:36 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/02 14:50:40 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/05 07:03:06 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define FTYPE_FN 		1
 # define FTYPE_FN_IO	2
 # define FTYPE_EXE		3
+
+# include <sys/types.h>
 
 typedef struct	s_ml_list
 {
@@ -39,7 +41,7 @@ typedef struct	s_unit_exe
 {
 	char			*path;
 	char			**argv;
-	int				(*fn)(int, int);
+	int				(*fn)(int, int, pid_t);
 }				t_unit_exe;
 
 typedef union	u_unit_fntypes

@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:26:51 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/04 22:40:36 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/05 06:57:45 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,14 @@ static int	exec_exe(t_unit_exe *exe)
 	int		status;
 	int		pipe_in[2];
 	int		pipe_out[2];
+	pid_t	pid_exe;
 
 	if (pipe(pipe_in) || pipe(pipe_out))
 	{
 		perror("libunit");
 		exit(EXIT_FAILURE);
 	}
-	if (fork() == 0)
+	if ((pid_exe = fork()) == 0)
 	{
 		dup2(pipe_in[0], STDIN_FILENO);
 		dup2(pipe_out[1], STDOUT_FILENO);
@@ -95,7 +96,7 @@ static int	exec_exe(t_unit_exe *exe)
 	{
 		close(pipe_in[0]);
 		close(pipe_out[1]);
-		if (exe->fn(pipe_in[1], pipe_out[0]))
+		if (exe->fn(pipe_in[1], pipe_out[0], pid_exe))
 		{
 			close(pipe_in[1]);
 			close(pipe_out[0]);

@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 15:51:43 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/02 14:50:32 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/05 07:01:58 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	unit_register_fn_io(t_unit_launcher *launcher, char *name,
 */
 
 void	unit_register_exe(t_unit_launcher *launcher, char *name, char *path,
-		char **argv, int (*f)(int, int))
+		char **argv, int (*f)(int, int, pid_t))
 {
 	t_unit_test	test;
 	t_ml_list	*new;

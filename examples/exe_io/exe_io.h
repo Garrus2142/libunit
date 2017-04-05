@@ -6,13 +6,15 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 14:56:40 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/04 21:18:17 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/05 07:00:53 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROG_IO_H
 # define PROG_IO_H
 
-int	exe_io_basic_test(int in, int out);
+# include <sys/types.h>
+
+int	exe_io_basic_test(int in, int out, pid_t pid);
 
 #endif
