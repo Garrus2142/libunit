@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/04/10 18:52:42 by thugo            ###   ########.fr        #
+#    Updated: 2017/04/10 19:33:41 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LINKS += -L../framework -lunit
 all: $(NAME)
 
 run: $(NAME)
-	-@./$(NAME)
+	@./$(NAME)
 
 $(NAME): $(OBJ) $(DEP)
 	@printf "\n[\e[33m$(NAME)\e[0m] \e[34mBuild:\e[0m $(NAME)"
