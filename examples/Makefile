@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/04/04 22:03:08 by thugo            ###   ########.fr        #
+#    Updated: 2017/04/10 18:52:42 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ run: $(NAME)
 
 $(NAME): $(OBJ) $(DEP)
 	@printf "\n[\e[33m$(NAME)\e[0m] \e[34mBuild:\e[0m $(NAME)"
-	@gcc $(OBJ) $(LINKS) -o $(NAME)
+	@gcc $(OBJ) -o $(NAME) $(LINKS)
 	@printf " [\e[32mOK\e[0m]\n"
 
 obj/%.o: %.c
