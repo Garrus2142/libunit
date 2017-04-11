@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:26:51 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/10 19:18:42 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/11 21:07:21 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static int	exec_fn_io(int (*f)(int, int))
 
 static int	exec_exe(t_unit_exe *exe)
 {
-	int		status;
+	int		status_exe;
+	int		status_fn;
 	int		pipe_in[2];
 	int		pipe_out[2];
 	pid_t	pid_exe;
@@ -82,8 +83,10 @@ static int	exec_exe(t_unit_exe *exe)
 		perror("libunit");
 		exit(EXIT_FAILURE);
 	}
-	/*fcntl(pipe_in[1], F_SETNOSIGPIPE, 1);
-	fcntl(pipe_out[1], F_SETNOSIGPIPE, 1);*/
+#ifdef __APPLE__
+	fcntl(pipe_in[1], F_SETNOSIGPIPE, 1);
+	fcntl(pipe_out[1], F_SETNOSIGPIPE, 1);
+#endif
 	if ((pid_exe = fork()) == 0)
 	{
 		dup2(pipe_in[0], STDIN_FILENO);
@@ -116,11 +119,11 @@ static int	exec_exe(t_unit_exe *exe)
 	close(pipe_in[1]);
 	close(pipe_out[0]);
 	close(pipe_out[1]);
-	wait(&status);
-	if ((!WIFEXITED(status) || WEXITSTATUS(status) != EXIT_SUCCESS))
-		return (status);
-	wait(&status);
-	return (status);
+	wait(&status_exe);
+	wait(&status_fn);
+	if ((!WIFEXITED(status_exe) || WEXITSTATUS(status_exe) != EXIT_SUCCESS))
+		return (status_exe);
+	return (status_fn);
 }
 
 static int	exec_test(t_unit_test *test)
