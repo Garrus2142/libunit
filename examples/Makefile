@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/04/10 19:33:41 by thugo            ###   ########.fr        #
+#    Updated: 2017/04/11 21:22:30 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ FLAGS = -Werror -Wall -Wextra
 #Includes Folders
 INCLUDES = -I includes
 #Link library
-LINKS = -L. -lft
+LINKS =
 #Tests Folders
 TFOLDERS = putstr strlen exe_io
 #Source files
-SRC = main.c
+SRC = main.c ft_putstr.c ft_strlen.c
 #Dependance files
 DEP = Makefile $(wildcard */*.h)
 
