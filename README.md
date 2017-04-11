@@ -57,6 +57,7 @@
 ## Référence
 >Les fonctions des test doivent renvoyer 0 en cas de succès, -1 en cas d'erreur.
 
+### libunit.h
 `t_unit_tests *unit_init(char *name)`<br/>
 **Initialisation d'une série de tests**<br/>
 *name*: Nom de la série de tests.<br/>
@@ -92,3 +93,13 @@
 *path*: Chemin de l'exécutable relatif au dossier *libunit/tests/*.<br/>
 *argv*: Arguments à envoyer à l'exécutable terminé par un caractère NULL.<br/>
 *f*: Pointeur sur fonction du test. (`int f(int in, int out, pid_t pid)`)<br/>
+
+### libunit_utils.h
+`int utils_getline(const int fd, char **line)`<br/>
+**Lecture ligne par ligne d'un descripteur de fichier**<br/>
+*fd*: Descripteur de fichier.<br/>
+*line*: Adresse du pointeur ou la ligne sera inscrite sans le '\\n'. (Doit être initialisé à NULL)<br/>
+
+`void utils_purgefd(const int fd)`<br/>
+**Purge le buffer d'un descripteur de fichier**<br/>
+*fd*: Descripteur de fichier.<br/>

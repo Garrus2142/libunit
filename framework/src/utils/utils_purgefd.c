@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minilib.h                                          :+:      :+:    :+:   */
+/*   utils_purgefd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/30 00:29:11 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/11 14:33:11 by thugo            ###   ########.fr       */
+/*   Created: 2017/04/11 19:28:42 by thugo             #+#    #+#             */
+/*   Updated: 2017/04/11 19:43:33 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINILIB_H
-# define MINILIB_H
+#include <unistd.h>
+#include <fcntl.h>
 
-# include "libunit_types.h"
+void	utils_purgefd(const int fd)
+{
+	int	savefcntl;
+	char buffer[32];
 
-t_ml_list	*ml_lstnew(void const *content, size_t size);
-void		ml_lstpush(t_ml_list **alst, t_ml_list *new);
-char		**ml_nulltabdup(char **src);
-char		*ml_strnjoin(char const *s1, char const *s2, size_t len);
-char		*ml_strnew(size_t size);
-
-#endif
+	savefcntl = fcntl(fd, F_GETFL);
+	fcntl(fd, F_SETFL, O_NONBLOCK);
+	while (read(fd, buffer, 32) > 0);
+	fcntl(fd, F_SETFL, savefcntl);
+}

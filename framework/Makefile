@@ -6,7 +6,7 @@
 #    By: thugo <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 14:48:37 by thugo             #+#    #+#              #
-#    Updated: 2017/04/04 21:05:02 by thugo            ###   ########.fr        #
+#    Updated: 2017/04/11 19:35:58 by thugo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = libunit.a
 FLAGS = -Werror -Wall -Wextra
 #Source files
 SRC = register.c launcher.c init.c minilib/ml_lstnew.c minilib/ml_lstpush.c\
-	  minilib/ml_nulltabdup.c display.c
+	  minilib/ml_nulltabdup.c minilib/ml_strnjoin.c minilib/ml_strnew.c display.c\
+	  utils/utils_getline.c utils/utils_purgefd.c
 #Dependance files
 DEP = Makefile includes/libunit.h includes/libunit_types.h includes/minilib.h
 OBJ = $(addprefix obj/, $(SRC:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 23:46:36 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/05 07:03:06 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/11 14:27:11 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define FTYPE_FN 		1
 # define FTYPE_FN_IO	2
 # define FTYPE_EXE		3
+
+# define GL_BUFF_SIZE	64
 
 # include <sys/types.h>
 
@@ -57,5 +59,11 @@ typedef struct	s_unit_test
 	int				ftype;
 	t_unit_fntypes	f;
 }				t_unit_test;
+
+typedef struct	s_u_gl
+{
+	int				fd;
+	char			buffer[GL_BUFF_SIZE + 1];
+}				t_u_gl;
 
 #endif
