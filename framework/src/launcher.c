@@ -6,7 +6,7 @@
 /*   By: thugo <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:26:51 by thugo             #+#    #+#             */
-/*   Updated: 2017/04/11 21:07:21 by thugo            ###   ########.fr       */
+/*   Updated: 2017/04/21 06:19:12 by thugo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "libunit.h"
 #include "libunit_internal.h"
 #include "minilib.h"
+
+extern char	**environ;
 
 static int	exec_fn(int (*f)(void))
 {
@@ -95,7 +97,7 @@ static int	exec_exe(t_unit_exe *exe)
 		close(pipe_out[0]);
 		close(pipe_in[0]);
 		close(pipe_out[1]);
-		execve(exe->path, exe->argv, NULL);
+		execve(exe->path, exe->argv, environ);
 		exit(EXIT_BADEXE);
 	}
 	if (fork() == 0)
