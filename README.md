@@ -61,12 +61,12 @@
 `t_unit_tests *unit_init(char *name)`<br/>
 **Initialisation d'une série de tests**<br/>
 *name*: Nom de la série de tests.<br/>
-*RETURN:* Structure de tests.<br/>
+*RETURN*: Structure de tests.<br/>
 
 `int unit_launch_tests(t_unit_tests *tests)`<br/>
 **Lancement de la série de tests**<br/>
 *tests*: Structure de tests.<br/>
-*RETURN:* 0 si tout les tests sont validés, -1 si un ou plusieurs test(s) ont échoué(s).<br/>
+*RETURN*: 0 si tout les tests sont validés, -1 si un ou plusieurs test(s) ont échoué(s).<br/>
 
 `void unit_register_launcher(t_unit_tests *tests, char *name, void (*f)(t_unit_launcher *))`<br/>
 **Enregistrement d'un lancher**<br/>
@@ -103,3 +103,23 @@
 `void utils_purgefd(const int fd)`<br/>
 **Purge le buffer d'un descripteur de fichier**<br/>
 *fd*: Descripteur de fichier.<br/>
+
+`char **utils_venvinit(void)`<br/>
+**Initialisation d'un environnement virtuel**<br/>
+*RETURN*: Tableau des variables d'environnement.<br/>
+
+`void utils_venvdestroy(char **venv)`<br/>
+**Detruit le tableau des variables d'environnement**<br/>
+*venv*: Tableau des variables d'environnement.<br/>
+
+`void utils_venvadd(char ***venv, const char *key, const char *value)`<br/>
+**Ajoute ou modifie une variable dans l'environnement virtuel**<br/>
+*venv*: Adresse du tableau des variables d'environnement.<br/>
+*key*: Nom de la variable. (Ne peut être NULL)<br/>
+*value*: Valeur de la variable. (Ne peut être NULL)<br/>
+
+`char *utils_venvget(char **env, const char *key)`<br/>
+**Récupère la valeur d'une variable dans l'environnement virtuel**<br/>
+*venv*: Tableau des variables d'environnement.<br>
+*key*: Nom de la variable. (Ne peut être NULL)<br/>
+*RETURN*: La valeur de la variable ou NULL si non trouvée. (Vous ne devez pas modifier directement cette variable, utiliser *utils_venvadd*)
